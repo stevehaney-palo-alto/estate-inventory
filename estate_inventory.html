@@ -134,7 +134,7 @@
 
         .item-image {
             width: 100%;
-            height: 200px;
+            height: 350px;
             object-fit: cover;
             background: #ecf0f1;
         }
@@ -254,6 +254,10 @@
         <p class="header-description">Select items and assign to beneficiaries or disposition</p>
 
         <div class="stats">
+            <div class="stat-box" style="background: #ffebee; border: 2px solid #e74c3c;">
+                <strong style="color: #c0392b;">⚠️ Discuss Items</strong>
+                <span id="discuss-count" style="color: #c0392b;">0</span>
+            </div>
             <div class="stat-box beneficiary">
                 <strong>Stephen</strong>
                 <span id="stephen-count">0</span>
@@ -323,7 +327,7 @@
 
     <script>
         const BENEFICIARIES = ['Stephen', 'Molly', 'Kasey', 'Mimi', 'Haneys'];
-        const DISPOSITIONS = ['Stephen', 'Molly', 'Kasey', 'Mimi', 'Haneys', 'Estate Sale', 'Donate', 'Dispose'];
+        const DISPOSITIONS = ['Estate Sale', 'Donate', 'Dispose'];
 
         let data = {};
 
@@ -386,9 +390,14 @@
                 const card = document.createElement('div');
                 card.className = 'item-card';
 
-                // Determine background color based on disposition
+                // Check if multiple beneficiaries are selected (needs discussion)
+                const hasMultipleBeneficiaries = itemData.beneficiaries.length > 1;
+
+                // Determine background color based on disposition or conflicts
                 let bgClass = '';
-                if (itemData.beneficiaries.length > 0 && itemData.beneficiaries.some(b => BENEFICIARIES.includes(b))) {
+                if (hasMultipleBeneficiaries) {
+                    bgClass = 'style="background: #ffebee; border: 3px solid #e74c3c;"';
+                } else if (itemData.beneficiaries.length > 0 && itemData.beneficiaries.some(b => BENEFICIARIES.includes(b))) {
                     bgClass = 'style="background: #e8f4f8;"';
                 } else if (itemData.disposition === 'Estate Sale') {
                     bgClass = 'style="background: #ebf5fb;"';
@@ -402,6 +411,7 @@
                     <img src="images/${filename}" alt="Item" class="item-image">
                     <div class="item-content" ${bgClass}>
                         <div class="item-number">${filename}</div>
+                        ${hasMultipleBeneficiaries ? '<div style="background: #e74c3c; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 12px; margin-bottom: 10px; text-align: center;">⚠️ Multiple Claims - Needs Discussion</div>' : ''}
 
                         <div class="beneficiary-checkboxes">
                             ${BENEFICIARIES.map(name => `
@@ -454,19 +464,28 @@
         function updateStats() {
             let stephen = 0, molly = 0, kasey = 0, mimi = 0, haneys = 0;
             let estateCount = 0, donateCount = 0, disposeCount = 0;
+            let discussCount = 0;
 
             Object.values(data).forEach(item => {
+                // Count beneficiaries
                 if (item.beneficiaries.includes('Stephen')) stephen++;
                 if (item.beneficiaries.includes('Molly')) molly++;
                 if (item.beneficiaries.includes('Kasey')) kasey++;
                 if (item.beneficiaries.includes('Mimi')) mimi++;
                 if (item.beneficiaries.includes('Haneys')) haneys++;
 
+                // Count dispositions
                 if (item.disposition === 'Estate Sale') estateCount++;
                 if (item.disposition === 'Donate') donateCount++;
                 if (item.disposition === 'Dispose') disposeCount++;
+
+                // Count items with multiple beneficiaries (conflicts)
+                if (item.beneficiaries.length > 1) {
+                    discussCount++;
+                }
             });
 
+            document.getElementById('discuss-count').textContent = discussCount;
             document.getElementById('stephen-count').textContent = stephen;
             document.getElementById('molly-count').textContent = molly;
             document.getElementById('kasey-count').textContent = kasey;
