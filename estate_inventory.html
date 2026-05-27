@@ -15,8 +15,6 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #f5f5f5;
             padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         header {
@@ -30,6 +28,51 @@
         h1 {
             color: #2c3e50;
             margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .header-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: #ecf0f1;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat-box strong {
+            display: block;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .stat-box span {
+            font-size: 22px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-box.beneficiary {
+            background: #e8f4f8;
+        }
+
+        .stat-box.beneficiary strong {
+            color: #0066cc;
+        }
+
+        .stat-box.beneficiary span {
+            color: #0066cc;
         }
 
         .header-buttons {
@@ -70,412 +113,111 @@
             background: #c0392b;
         }
 
-        .stats {
+        .items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .stat-box {
+        .item-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s;
+        }
+
+        .item-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             background: #ecf0f1;
-            padding: 10px;
-            border-radius: 4px;
-            text-align: center;
         }
 
-        .stat-box strong {
-            display: block;
-            color: #2c3e50;
-            margin-bottom: 5px;
+        .item-content {
+            padding: 15px;
         }
 
-        .stat-box span {
-            font-size: 24px;
-            font-weight: bold;
-            color: #3498db;
+        .item-number {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-bottom: 10px;
         }
 
-        .stat-box.beneficiary {
-            background: #e8f4f8;
+        .beneficiary-checkboxes {
+            margin-bottom: 15px;
         }
 
-        .stat-box.beneficiary strong {
-            color: #0066cc;
-        }
-
-        .stat-box.beneficiary span {
-            color: #0066cc;
-        }
-
-        .beneficiary-selector {
-            margin-top: 15px;
-            padding: 12px;
-            background: #f0f8ff;
-            border-radius: 4px;
-            border-left: 4px solid #3498db;
-        }
-
-        .beneficiary-selector label {
-            display: inline-flex;
+        .beneficiary-label {
+            display: flex;
             align-items: center;
             gap: 8px;
-            margin-right: 15px;
             margin-bottom: 8px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        .beneficiary-selector input[type="checkbox"] {
+        .beneficiary-label input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
         }
 
-        .filters {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
+        .disposition-section {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #ecf0f1;
         }
 
-        input[type="text"],
-        input[type="file"] {
-            padding: 8px 12px;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-            flex: 1;
-            min-width: 200px;
+        .disposition-label {
+            display: block;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 6px;
+            font-weight: 500;
         }
 
         select {
-            padding: 8px 12px;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-        }
-
-        .rooms-container {
-            display: grid;
-            gap: 20px;
-        }
-
-        .room-section {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .room-header {
-            background: #34495e;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .room-header:hover {
-            background: #2c3e50;
-        }
-
-        .room-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .room-count {
-            background: rgba(255,255,255,0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-
-        .room-content {
-            padding: 15px 20px;
-            display: none;
-        }
-
-        .room-content.open {
-            display: block;
-        }
-
-        .items-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .item {
-            display: grid;
-            grid-template-columns: 1fr auto 40px;
-            gap: 15px;
-            padding: 12px;
-            background: #f9f9f9;
-            border-radius: 4px;
-            border-left: 4px solid #3498db;
-            align-items: flex-start;
-        }
-
-        .item.family-claim {
-            border-left-color: #e67e22;
-            background: #fef5e7;
-        }
-
-        .item.donation {
-            border-left-color: #27ae60;
-        }
-
-        .item.disposal {
-            border-left-color: #95a5a6;
-            opacity: 0.7;
-        }
-
-        .item-left {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .item-name {
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 16px;
-        }
-
-        .item-meta {
-            display: flex;
-            gap: 15px;
-            font-size: 13px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .item-meta-label {
-            font-weight: 500;
-            color: #7f8c8d;
-            min-width: 70px;
-        }
-
-        .item-meta-value {
-            color: #2c3e50;
-        }
-
-        .item-destination {
-            padding: 6px 10px;
-            background: white;
+            width: 100%;
+            padding: 8px;
             border: 1px solid #bdc3c7;
             border-radius: 4px;
             font-size: 13px;
-            cursor: pointer;
-            min-width: 120px;
-        }
-
-        .item-destination.estate-sale {
-            background: #3498db;
-            color: white;
-            border-color: #2980b9;
-        }
-
-        .item-destination.family-claim {
-            background: #e67e22;
-            color: white;
-            border-color: #d35400;
-        }
-
-        .item-destination.donation {
-            background: #27ae60;
-            color: white;
-            border-color: #229954;
-        }
-
-        .item-destination.disposal {
-            background: #95a5a6;
-            color: white;
-            border-color: #7f8c8d;
-        }
-
-        .item-delete {
-            width: 30px;
-            height: 30px;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .item-delete:hover {
-            background: #c0392b;
-        }
-
-        .item-photo-section {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .photo-container {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            background: #ecf0f1;
-            aspect-ratio: 1;
-        }
-
-        .photo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .photo-delete {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(231, 76, 60, 0.9);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            font-size: 14px;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .photo-delete:hover {
-            background: rgba(192, 57, 43, 0.9);
-        }
-
-        .camera-input-wrapper {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            margin-top: 8px;
-        }
-
-        .camera-input-wrapper input[type="file"] {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .camera-input-wrapper button {
-            flex: 0;
-            padding: 6px 12px;
-            font-size: 12px;
-        }
-
-        .add-item-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr auto;
-            gap: 10px;
-            padding: 15px;
-            background: #ecf0f1;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-        }
-
-        .modal.open {
-            display: block;
-        }
-
-        .modal-content {
             background: white;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
         }
 
-        .modal h2 {
-            margin-bottom: 15px;
-            color: #2c3e50;
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
         }
 
-        .modal label {
-            display: block;
-            margin: 10px 0 5px;
-            color: #2c3e50;
-            font-weight: 500;
-        }
-
-        .modal input,
-        .modal select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        #photo-preview img {
-            max-width: 200px;
-            max-height: 200px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        #photo-preview p {
-            color: #27ae60;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .status-legend {
+        .legend {
             background: white;
             padding: 15px 20px;
             border-radius: 8px;
             margin-bottom: 20px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #2c3e50;
         }
 
         .legend-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
+            font-size: 12px;
         }
 
         .legend-item {
@@ -484,41 +226,24 @@
             gap: 8px;
         }
 
-        .legend-box {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            border-left: 4px solid;
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
         }
 
-        .legend-box.estate-sale {
-            border-left-color: #3498db;
-            background: #ebf5fb;
-        }
-
-        .legend-box.family-claim {
-            border-left-color: #e67e22;
-            background: #fef5e7;
-        }
-
-        .legend-box.donation {
-            border-left-color: #27ae60;
-            background: #eafaf1;
-        }
-
-        .legend-box.disposal {
-            border-left-color: #95a5a6;
-            background: #f4f6f7;
-        }
+        .legend-color.family { background: #e8f4f8; border: 2px solid #0066cc; }
+        .legend-color.estate { background: #ebf5fb; border: 2px solid #3498db; }
+        .legend-color.donate { background: #eafaf1; border: 2px solid #27ae60; }
+        .legend-color.dispose { background: #f4f6f7; border: 2px solid #95a5a6; }
 
         @media (max-width: 768px) {
-            .item {
-                grid-template-columns: 1fr 80px 40px;
-                gap: 10px;
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
 
-            .add-item-form {
-                grid-template-columns: 1fr auto;
+            h1 {
+                font-size: 22px;
             }
         }
     </style>
@@ -526,18 +251,9 @@
 <body>
     <header>
         <h1>Estate Inventory - Mary Ellen Estate</h1>
-        <p style="color: #7f8c8d; margin-bottom: 15px;">Track items for estate sale, family claims, donations, and disposal</p>
-        <div class="header-buttons">
-            <button onclick="addNewRoom()">+ Add Room</button>
-            <button class="secondary" onclick="exportData()">Export for Estate Sale</button>
-            <button class="secondary" onclick="printInventory()">Print</button>
-            <button class="danger" onclick="clearAllData()">Clear All Data</button>
-        </div>
+        <p class="header-description">Select items and assign to beneficiaries or disposition</p>
+
         <div class="stats">
-            <div class="stat-box">
-                <strong>Total Items</strong>
-                <span id="total-items">0</span>
-            </div>
             <div class="stat-box beneficiary">
                 <strong>Stephen</strong>
                 <span id="stephen-count">0</span>
@@ -563,552 +279,212 @@
                 <span id="estate-count">0</span>
             </div>
             <div class="stat-box">
-                <strong>Donations</strong>
-                <span id="donation-count">0</span>
+                <strong>Donate</strong>
+                <span id="donate-count">0</span>
             </div>
             <div class="stat-box">
-                <strong>Disposal</strong>
-                <span id="disposal-count">0</span>
+                <strong>Dispose</strong>
+                <span id="dispose-count">0</span>
             </div>
+        </div>
+
+        <div class="header-buttons">
+            <button onclick="exportData()">Export to CSV</button>
+            <button class="secondary" onclick="printInventory()">Print</button>
+            <button class="danger" onclick="clearAllData()">Clear All</button>
         </div>
     </header>
 
-    <div class="status-legend">
-        <strong style="display: block; margin-bottom: 10px;">Item Status</strong>
+    <div class="legend">
+        <div class="legend-title">Disposition Guide</div>
         <div class="legend-items">
             <div class="legend-item">
-                <div class="legend-box estate-sale"></div>
+                <div class="legend-color family"></div>
+                <span>Family Member</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color estate"></div>
                 <span>Estate Sale</span>
             </div>
             <div class="legend-item">
-                <div class="legend-box family-claim"></div>
-                <span>Family Claim</span>
+                <div class="legend-color donate"></div>
+                <span>Donate</span>
             </div>
             <div class="legend-item">
-                <div class="legend-box donation"></div>
-                <span>Donation</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-box disposal"></div>
-                <span>Disposal</span>
+                <div class="legend-color dispose"></div>
+                <span>Dispose</span>
             </div>
         </div>
     </div>
 
-    <div class="filters">
-        <input type="text" id="search-box" placeholder="Search items..." onkeyup="filterItems()">
-        <select id="destination-filter" onchange="filterItems()">
-            <option value="">All Destinations</option>
-            <option value="estate-sale">Estate Sale Only</option>
-            <option value="family-claim">Family Claims Only</option>
-            <option value="donation">Donations Only</option>
-            <option value="disposal">Disposal Only</option>
-        </select>
-    </div>
-
-    <div class="rooms-container" id="rooms-container">
-        <!-- Rooms will be added here dynamically -->
-    </div>
-
-    <!-- Modal for adding new room -->
-    <div id="room-modal" class="modal">
-        <div class="modal-content">
-            <h2>Add New Room</h2>
-            <label for="room-name">Room Name:</label>
-            <input type="text" id="room-name" placeholder="e.g., Master Bedroom, Kitchen, Living Room">
-            <div class="modal-buttons">
-                <button class="secondary" onclick="closeRoomModal()">Cancel</button>
-                <button onclick="saveNewRoom()">Add Room</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for adding new item -->
-    <div id="item-modal" class="modal">
-        <div class="modal-content">
-            <h2>Add Item to <span id="modal-room-name"></span></h2>
-            <label for="item-name">Item Name:</label>
-            <input type="text" id="item-name" placeholder="e.g., Oak dining table">
-            <label>Who wants this item? (check all that apply)</label>
-            <div class="beneficiary-selector">
-                <label><input type="checkbox" id="ben-stephen" value="Stephen"> Stephen</label>
-                <label><input type="checkbox" id="ben-molly" value="Molly"> Molly</label>
-                <label><input type="checkbox" id="ben-kasey" value="Kasey"> Kasey</label>
-                <label><input type="checkbox" id="ben-mimi" value="Mimi"> Mimi</label>
-                <label><input type="checkbox" id="ben-haneys" value="Haneys"> Haneys</label>
-            </div>
-            <label for="item-destination">If no one claims it, where does it go?</label>
-            <select id="item-destination">
-                <option value="estate-sale">Estate Sale</option>
-                <option value="donation">Donation</option>
-                <option value="disposal">Disposal</option>
-            </select>
-            <label for="item-photo">📸 Take/Upload Photo (optional):</label>
-            <input type="file" id="item-photo" accept="image/*" capture="environment" placeholder="Click to take or select photo">
-            <div id="photo-preview" style="margin: 10px 0; text-align: center;">
-                <!-- Photo preview will appear here -->
-            </div>
-            <div class="modal-buttons">
-                <button class="secondary" onclick="closeItemModal()">Cancel</button>
-                <button onclick="saveNewItem()">Add Item</button>
-            </div>
-        </div>
+    <div class="items-grid" id="items-grid">
+        <!-- Items will be loaded here -->
     </div>
 
     <script>
-        let data = {
-            rooms: []
-        };
-        let currentModalPhoto = null;
+        const BENEFICIARIES = ['Stephen', 'Molly', 'Kasey', 'Mimi', 'Haneys'];
+        const DISPOSITIONS = ['Stephen', 'Molly', 'Kasey', 'Mimi', 'Haneys', 'Estate Sale', 'Donate', 'Dispose'];
 
-        // Load data from localStorage on page load
+        let data = {};
+
+        // Initialize data structure
+        function initializeData() {
+            const imageFiles = [
+                'IMG_0060Medium.jpeg', 'IMG_0061Medium.jpeg', 'IMG_0062Medium.jpeg', 'IMG_0063Medium.jpeg',
+                'IMG_0064Medium.jpeg', 'IMG_0065Medium.jpeg', 'IMG_0066Medium.jpeg', 'IMG_0067Medium.jpeg',
+                'IMG_0068Medium.jpeg', 'IMG_0069Medium.jpeg', 'IMG_0070Medium.jpeg', 'IMG_0071Medium.jpeg',
+                'IMG_0072Medium.jpeg', 'IMG_0073Medium.jpeg', 'IMG_0074Medium.jpeg', 'IMG_0075Medium.jpeg',
+                'IMG_0076Medium.jpeg', 'IMG_0077Medium.jpeg', 'IMG_0078Medium.jpeg', 'IMG_0079Medium.jpeg',
+                'IMG_0080Medium.jpeg', 'IMG_0081Medium.jpeg', 'IMG_0082Medium.jpeg', 'IMG_0083Medium.jpeg',
+                'IMG_0084Medium.jpeg', 'IMG_0085Medium.jpeg', 'IMG_0086Medium.jpeg', 'IMG_0087Medium.jpeg',
+                'IMG_0088Medium.jpeg', 'IMG_0089Medium.jpeg', 'IMG_0090Medium.jpeg', 'IMG_0091Medium.jpeg',
+                'IMG_0092Medium.jpeg', 'IMG_0093Medium.jpeg', 'IMG_0094Medium.jpeg', 'IMG_0095Medium.jpeg',
+                'IMG_0096Medium.jpeg', 'IMG_0097Medium.jpeg', 'IMG_0098Medium.jpeg', 'IMG_0099Medium.jpeg',
+                'IMG_0100Medium.jpeg', 'IMG_0101Medium.jpeg', 'IMG_0102Medium.jpeg', 'IMG_0103Medium.jpeg',
+                'IMG_0104Medium.jpeg', 'IMG_0105Medium.jpeg', 'IMG_0106Medium.jpeg', 'IMG_0107Medium.jpeg',
+                'IMG_0108Medium.jpeg', 'IMG_0109Medium.jpeg', 'IMG_0110Medium.jpeg', 'IMG_0111Medium.jpeg',
+                'IMG_0112Medium.jpeg', 'IMG_0113Medium.jpeg', 'IMG_0114Medium.jpeg', 'IMG_0115Medium.jpeg',
+                'IMG_0116Medium.jpeg', 'IMG_0117Medium.jpeg', 'IMG_0118Medium.jpeg', 'IMG_0119Medium.jpeg',
+                'IMG_0120Medium.jpeg', 'IMG_0121Medium.jpeg', 'IMG_0122Medium.jpeg', 'IMG_0123Medium.jpeg',
+                'IMG_0124Medium.jpeg', 'IMG_0125Medium.jpeg'
+            ];
+
+            imageFiles.forEach(file => {
+                if (!data[file]) {
+                    data[file] = {
+                        beneficiaries: [],
+                        disposition: null
+                    };
+                }
+            });
+        }
+
+        // Load data from localStorage
         function loadData() {
-            const saved = localStorage.getItem('estateInventory');
+            const saved = localStorage.getItem('estateInventoryData');
             if (saved) {
                 data = JSON.parse(saved);
             } else {
-                initializeDefaultRooms();
+                initializeData();
             }
-            renderRooms();
+            renderItems();
             updateStats();
-        }
-
-        // Initialize with default rooms
-        function initializeDefaultRooms() {
-            data.rooms = [
-                { name: 'Living Room', items: [] },
-                { name: 'Master Bedroom', items: [] },
-                { name: 'Dining Room', items: [] },
-                { name: 'Kitchen', items: [] },
-                { name: 'Bathrooms', items: [] },
-                { name: 'Hallways/Entryways', items: [] },
-                { name: 'Basement', items: [] },
-                { name: 'Garage', items: [] },
-                { name: 'Outdoor', items: [] }
-            ];
         }
 
         // Save data to localStorage
         function saveData() {
-            localStorage.setItem('estateInventory', JSON.stringify(data));
+            localStorage.setItem('estateInventoryData', JSON.stringify(data));
             updateStats();
         }
 
-        // Render all rooms
-        function renderRooms() {
-            const container = document.getElementById('rooms-container');
-            container.innerHTML = '';
+        // Render all items
+        function renderItems() {
+            const grid = document.getElementById('items-grid');
+            grid.innerHTML = '';
 
-            data.rooms.forEach((room, roomIndex) => {
-                const roomDiv = document.createElement('div');
-                roomDiv.className = 'room-section';
+            Object.entries(data).forEach(([filename, itemData]) => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
 
-                const itemCount = room.items.length;
-                const roomHtml = `
-                    <div class="room-header" onclick="toggleRoom(${roomIndex})">
-                        <div>
-                            <span class="room-title">${room.name}</span>
+                // Determine background color based on disposition
+                let bgClass = '';
+                if (itemData.beneficiaries.length > 0 && itemData.beneficiaries.some(b => BENEFICIARIES.includes(b))) {
+                    bgClass = 'style="background: #e8f4f8;"';
+                } else if (itemData.disposition === 'Estate Sale') {
+                    bgClass = 'style="background: #ebf5fb;"';
+                } else if (itemData.disposition === 'Donate') {
+                    bgClass = 'style="background: #eafaf1;"';
+                } else if (itemData.disposition === 'Dispose') {
+                    bgClass = 'style="background: #f4f6f7;"';
+                }
+
+                card.innerHTML = `
+                    <img src="images/${filename}" alt="Item" class="item-image">
+                    <div class="item-content" ${bgClass}>
+                        <div class="item-number">${filename}</div>
+
+                        <div class="beneficiary-checkboxes">
+                            ${BENEFICIARIES.map(name => `
+                                <label class="beneficiary-label">
+                                    <input type="checkbox"
+                                        ${itemData.beneficiaries.includes(name) ? 'checked' : ''}
+                                        onchange="toggleBeneficiary('${filename}', '${name}', this.checked)">
+                                    <span>${name}</span>
+                                </label>
+                            `).join('')}
                         </div>
-                        <span class="room-count">${itemCount} items</span>
-                    </div>
-                    <div class="room-content" id="room-${roomIndex}">
-                        <div style="margin-bottom: 15px;">
-                            <button onclick="openItemModal(${roomIndex})">+ Add Item</button>
-                            <button class="secondary" onclick="deleteRoom(${roomIndex})">Remove Room</button>
-                        </div>
-                        <div class="items-list" id="items-${roomIndex}">
-                            <!-- Items will be rendered here -->
-                        </div>
-                    </div>
-                `;
-                roomDiv.innerHTML = roomHtml;
-                container.appendChild(roomDiv);
 
-                // Render items for this room
-                renderItems(roomIndex);
-            });
-        }
-
-        // Render items for a specific room
-        function renderItems(roomIndex) {
-            const itemsContainer = document.getElementById(`items-${roomIndex}`);
-            const room = data.rooms[roomIndex];
-
-            if (room.items.length === 0) {
-                itemsContainer.innerHTML = '<p style="color: #95a5a6; font-style: italic;">No items added yet</p>';
-                return;
-            }
-
-            itemsContainer.innerHTML = '';
-            room.items.forEach((item, itemIndex) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = `item ${item.destination}`;
-                itemDiv.id = `item-${roomIndex}-${itemIndex}`;
-
-                // Build beneficiary options for dropdown
-                const beneficiaryOptions = [
-                    { name: 'Stephen', selected: item.beneficiaries && item.beneficiaries.includes('Stephen') },
-                    { name: 'Molly', selected: item.beneficiaries && item.beneficiaries.includes('Molly') },
-                    { name: 'Kasey', selected: item.beneficiaries && item.beneficiaries.includes('Kasey') },
-                    { name: 'Mimi', selected: item.beneficiaries && item.beneficiaries.includes('Mimi') },
-                    { name: 'Haneys', selected: item.beneficiaries && item.beneficiaries.includes('Haneys') }
-                ];
-
-                const selectedBeneficiaries = beneficiaryOptions.filter(b => b.selected).map(b => b.name).join(', ') || 'None selected';
-
-                // Build left column with item info
-                const itemLeftHtml = `
-                    <div class="item-left">
-                        <div class="item-name">${item.name}</div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
-                            <div>
-                                <label style="display: block; font-size: 12px; color: #7f8c8d; margin-bottom: 4px; font-weight: 500;">Claimed by:</label>
-                                <select multiple style="width: 100%; padding: 6px 10px; background: white; border: 1px solid #bdc3c7; border-radius: 4px; font-size: 12px; cursor: pointer; height: 80px;" onchange="updateBeneficiariesFromDropdown(${roomIndex}, ${itemIndex}, this)">
-                                    <option value="Stephen" ${item.beneficiaries && item.beneficiaries.includes('Stephen') ? 'selected' : ''}>Stephen</option>
-                                    <option value="Molly" ${item.beneficiaries && item.beneficiaries.includes('Molly') ? 'selected' : ''}>Molly</option>
-                                    <option value="Kasey" ${item.beneficiaries && item.beneficiaries.includes('Kasey') ? 'selected' : ''}>Kasey</option>
-                                    <option value="Mimi" ${item.beneficiaries && item.beneficiaries.includes('Mimi') ? 'selected' : ''}>Mimi</option>
-                                    <option value="Haneys" ${item.beneficiaries && item.beneficiaries.includes('Haneys') ? 'selected' : ''}>Haneys</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label style="display: block; font-size: 12px; color: #7f8c8d; margin-bottom: 4px; font-weight: 500;">If no one claims it, where does it go?</label>
-                                <select onchange="updateItemDestination(${roomIndex}, ${itemIndex}, this.value)" style="width: 100%; padding: 6px 10px; background: white; border: 1px solid #bdc3c7; border-radius: 4px; font-size: 12px; cursor: pointer;">
-                                    <option value="estate-sale" ${item.destination === 'estate-sale' ? 'selected' : ''}>Estate Sale</option>
-                                    <option value="donation" ${item.destination === 'donation' ? 'selected' : ''}>Donation</option>
-                                    <option value="disposal" ${item.destination === 'disposal' ? 'selected' : ''}>Disposal</option>
-                                </select>
-                            </div>
+                        <div class="disposition-section">
+                            <label class="disposition-label">If no one claims it:</label>
+                            <select onchange="updateDisposition('${filename}', this.value)">
+                                <option value="">Select...</option>
+                                ${DISPOSITIONS.map(d => `
+                                    <option value="${d}" ${itemData.disposition === d ? 'selected' : ''}>${d}</option>
+                                `).join('')}
+                            </select>
                         </div>
                     </div>
                 `;
 
-                // Build photo thumbnail for right side
-                let photoThumbnailHtml = '';
-                if (item.photos && item.photos.length > 0) {
-                    photoThumbnailHtml = `
-                        <div class="item-photo-section" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                            <div class="photo-container" style="width: 80px; height: 80px;">
-                                <img src="${item.photos[0]}" alt="Item photo" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <button style="padding: 4px 8px; font-size: 11px; background: #3498db; color: white; border: none; border-radius: 3px; cursor: pointer;" onclick="editPhotos(${roomIndex}, ${itemIndex})">📸 Manage</button>
-                        </div>
-                    `;
-                } else {
-                    photoThumbnailHtml = `
-                        <div class="item-photo-section" style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
-                            <div class="photo-container" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: #ecf0f1; color: #95a5a6; font-size: 24px;">📷</div>
-                            <button style="padding: 4px 8px; font-size: 11px; background: #95a5a6; color: white; border: none; border-radius: 3px; cursor: pointer;" onclick="editPhotos(${roomIndex}, ${itemIndex})">Add Photo</button>
-                        </div>
-                    `;
-                }
-
-                // Build the complete item layout: left content | photo | delete
-                itemDiv.innerHTML = `
-                    ${itemLeftHtml}
-                    ${photoThumbnailHtml}
-                    <button class="item-delete" onclick="deleteItem(${roomIndex}, ${itemIndex})">×</button>
-                `;
-
-                itemsContainer.appendChild(itemDiv);
+                grid.appendChild(card);
             });
         }
 
-        // Handle beneficiary dropdown changes
-        function updateBeneficiariesFromDropdown(roomIndex, itemIndex, selectElement) {
-            const selectedOptions = Array.from(selectElement.selectedOptions).map(opt => opt.value);
-            data.rooms[roomIndex].items[itemIndex].beneficiaries = selectedOptions;
-            saveData();
-            renderItems(roomIndex);
-        }
-
-        // Edit photos for an item (opens a mini modal or section)
-        function editPhotos(roomIndex, itemIndex) {
-            const item = data.rooms[roomIndex].items[itemIndex];
-            let photosHtml = `<h3>Manage Photos for "${item.name}"</h3>`;
-
-            if (item.photos && item.photos.length > 0) {
-                photosHtml += '<div class="photo-grid" style="margin: 15px 0;">';
-                item.photos.forEach((photo, photoIndex) => {
-                    photosHtml += `
-                        <div class="photo-container">
-                            <img src="${photo}" alt="Item photo">
-                            <button class="photo-delete" onclick="deletePhoto(${roomIndex}, ${itemIndex}, ${photoIndex})">×</button>
-                        </div>
-                    `;
-                });
-                photosHtml += '</div>';
-            }
-
-            photosHtml += `
-                <div style="margin: 15px 0;">
-                    <input type="file" id="temp-photo-input" accept="image/*" capture="environment" onchange="addPhoto(${roomIndex}, ${itemIndex}, this)" style="display: none;">
-                    <button onclick="document.getElementById('temp-photo-input').click()" style="padding: 8px 12px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">📸 Add Photo</button>
-                </div>
-            `;
-
-            alert('Photo management feature - use the file input to add more photos or delete by clicking the X on existing photos.');
-        }
-
-        // Add photo to item
-        function addPhoto(roomIndex, itemIndex, inputElement) {
-            const file = inputElement.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64Photo = e.target.result;
-
-                if (!data.rooms[roomIndex].items[itemIndex].photos) {
-                    data.rooms[roomIndex].items[itemIndex].photos = [];
-                }
-
-                data.rooms[roomIndex].items[itemIndex].photos.push(base64Photo);
-                saveData();
-                renderItems(roomIndex);
-            };
-
-            reader.readAsDataURL(file);
-            inputElement.value = '';
-        }
-
-        // Delete photo from item
-        function deletePhoto(roomIndex, itemIndex, photoIndex) {
-            if (confirm('Delete this photo?')) {
-                data.rooms[roomIndex].items[itemIndex].photos.splice(photoIndex, 1);
-                saveData();
-                renderItems(roomIndex);
-            }
-        }
-
-        // Toggle room open/closed
-        function toggleRoom(roomIndex) {
-            const content = document.getElementById(`room-${roomIndex}`);
-            content.classList.toggle('open');
-        }
-
-        // Open modal for adding new room
-        function addNewRoom() {
-            document.getElementById('room-modal').classList.add('open');
-            document.getElementById('room-name').focus();
-        }
-
-        // Close room modal
-        function closeRoomModal() {
-            document.getElementById('room-modal').classList.remove('open');
-            document.getElementById('room-name').value = '';
-        }
-
-        // Save new room
-        function saveNewRoom() {
-            const roomName = document.getElementById('room-name').value.trim();
-            if (!roomName) {
-                alert('Please enter a room name');
-                return;
-            }
-
-            data.rooms.push({ name: roomName, items: [] });
-            saveData();
-            renderRooms();
-            closeRoomModal();
-        }
-
-        // Open modal for adding new item
-        function openItemModal(roomIndex) {
-            document.getElementById('modal-room-name').textContent = data.rooms[roomIndex].name;
-            document.getElementById('item-modal').dataset.roomIndex = roomIndex;
-            document.getElementById('item-modal').classList.add('open');
-            document.getElementById('item-name').focus();
-        }
-
-        // Handle photo preview in modal
-        document.addEventListener('change', function(e) {
-            if (e.target.id === 'item-photo') {
-                const file = e.target.files[0];
-                const previewDiv = document.getElementById('photo-preview');
-
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        currentModalPhoto = event.target.result;
-                        previewDiv.innerHTML = `<img src="${currentModalPhoto}" alt="Photo preview"><p>✓ Photo selected</p>`;
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    currentModalPhoto = null;
-                    previewDiv.innerHTML = '';
-                }
-            }
-        });
-
-        // Close item modal
-        function closeItemModal() {
-            document.getElementById('item-modal').classList.remove('open');
-            document.getElementById('item-name').value = '';
-            document.getElementById('item-destination').value = 'estate-sale';
-            document.getElementById('item-photo').value = '';
-            document.getElementById('photo-preview').innerHTML = '';
-            document.getElementById('ben-stephen').checked = false;
-            document.getElementById('ben-molly').checked = false;
-            document.getElementById('ben-kasey').checked = false;
-            document.getElementById('ben-mimi').checked = false;
-            document.getElementById('ben-haneys').checked = false;
-            currentModalPhoto = null;
-        }
-
-        // Save new item
-        function saveNewItem() {
-            const roomIndex = parseInt(document.getElementById('item-modal').dataset.roomIndex);
-            const itemName = document.getElementById('item-name').value.trim();
-            const destination = document.getElementById('item-destination').value;
-
-            // Get selected beneficiaries
-            const beneficiaries = [];
-            if (document.getElementById('ben-stephen').checked) beneficiaries.push('Stephen');
-            if (document.getElementById('ben-molly').checked) beneficiaries.push('Molly');
-            if (document.getElementById('ben-kasey').checked) beneficiaries.push('Kasey');
-            if (document.getElementById('ben-mimi').checked) beneficiaries.push('Mimi');
-            if (document.getElementById('ben-haneys').checked) beneficiaries.push('Haneys');
-
-            if (!itemName) {
-                alert('Please enter an item name');
-                return;
-            }
-
-            const photos = currentModalPhoto ? [currentModalPhoto] : [];
-
-            data.rooms[roomIndex].items.push({
-                name: itemName,
-                destination: destination,
-                beneficiaries: beneficiaries,
-                photos: photos
-            });
-
-            saveData();
-            renderItems(roomIndex);
-            closeItemModal();
-        }
-
-        // Toggle item completion
-        function toggleItem(roomIndex, itemIndex) {
-            document.getElementById(`item-${roomIndex}-${itemIndex}`).style.opacity = '0.6';
-        }
-
-        // Update item destination
-        function updateItemDestination(roomIndex, itemIndex, newDestination) {
-            data.rooms[roomIndex].items[itemIndex].destination = newDestination;
-            saveData();
-            renderItems(roomIndex);
-        }
-
-        // Update beneficiary selection
-        function updateBeneficiary(roomIndex, itemIndex, beneficiaryName, isChecked) {
-            if (!data.rooms[roomIndex].items[itemIndex].beneficiaries) {
-                data.rooms[roomIndex].items[itemIndex].beneficiaries = [];
-            }
-
-            if (isChecked) {
-                if (!data.rooms[roomIndex].items[itemIndex].beneficiaries.includes(beneficiaryName)) {
-                    data.rooms[roomIndex].items[itemIndex].beneficiaries.push(beneficiaryName);
+        // Toggle beneficiary checkbox
+        function toggleBeneficiary(filename, beneficiary, checked) {
+            if (checked) {
+                if (!data[filename].beneficiaries.includes(beneficiary)) {
+                    data[filename].beneficiaries.push(beneficiary);
                 }
             } else {
-                const index = data.rooms[roomIndex].items[itemIndex].beneficiaries.indexOf(beneficiaryName);
-                if (index > -1) {
-                    data.rooms[roomIndex].items[itemIndex].beneficiaries.splice(index, 1);
-                }
+                data[filename].beneficiaries = data[filename].beneficiaries.filter(b => b !== beneficiary);
             }
-
             saveData();
-            renderItems(roomIndex);
+            renderItems();
         }
 
-        // Delete item
-        function deleteItem(roomIndex, itemIndex) {
-            if (confirm('Delete this item?')) {
-                data.rooms[roomIndex].items.splice(itemIndex, 1);
-                saveData();
-                renderItems(roomIndex);
-            }
-        }
-
-        // Delete room
-        function deleteRoom(roomIndex) {
-            if (confirm(`Delete "${data.rooms[roomIndex].name}" and all its items?`)) {
-                data.rooms.splice(roomIndex, 1);
-                saveData();
-                renderRooms();
-            }
-        }
-
-        // Filter items
-        function filterItems() {
-            const searchTerm = document.getElementById('search-box').value.toLowerCase();
-            const destinationFilter = document.getElementById('destination-filter').value;
-
-            document.querySelectorAll('.item').forEach(item => {
-                const itemText = item.textContent.toLowerCase();
-                const itemDestination = item.className.split(' ')[1];
-
-                const matchesSearch = itemText.includes(searchTerm);
-                const matchesDestination = !destinationFilter || itemDestination === destinationFilter;
-
-                item.style.display = matchesSearch && matchesDestination ? 'grid' : 'none';
-            });
+        // Update disposition dropdown
+        function updateDisposition(filename, disposition) {
+            data[filename].disposition = disposition || null;
+            saveData();
+            renderItems();
         }
 
         // Update statistics
         function updateStats() {
-            let total = 0;
-            let stephensCount = 0;
-            let mollysCount = 0;
-            let kaseysCount = 0;
-            let mimisCount = 0;
-            let haneysCount = 0;
-            let estateSale = 0;
-            let donations = 0;
-            let disposal = 0;
+            let stephen = 0, molly = 0, kasey = 0, mimi = 0, haneys = 0;
+            let estateCount = 0, donateCount = 0, disposeCount = 0;
 
-            data.rooms.forEach(room => {
-                room.items.forEach(item => {
-                    total++;
+            Object.values(data).forEach(item => {
+                if (item.beneficiaries.includes('Stephen')) stephen++;
+                if (item.beneficiaries.includes('Molly')) molly++;
+                if (item.beneficiaries.includes('Kasey')) kasey++;
+                if (item.beneficiaries.includes('Mimi')) mimi++;
+                if (item.beneficiaries.includes('Haneys')) haneys++;
 
-                    // Count beneficiaries
-                    if (item.beneficiaries && item.beneficiaries.length > 0) {
-                        if (item.beneficiaries.includes('Stephen')) stephensCount++;
-                        if (item.beneficiaries.includes('Molly')) mollysCount++;
-                        if (item.beneficiaries.includes('Kasey')) kaseysCount++;
-                        if (item.beneficiaries.includes('Mimi')) mimisCount++;
-                        if (item.beneficiaries.includes('Haneys')) haneysCount++;
-                    }
-
-                    // Count destinations
-                    if (item.destination === 'estate-sale') estateSale++;
-                    if (item.destination === 'donation') donations++;
-                    if (item.destination === 'disposal') disposal++;
-                });
+                if (item.disposition === 'Estate Sale') estateCount++;
+                if (item.disposition === 'Donate') donateCount++;
+                if (item.disposition === 'Dispose') disposeCount++;
             });
 
-            document.getElementById('total-items').textContent = total;
-            document.getElementById('stephen-count').textContent = stephensCount;
-            document.getElementById('molly-count').textContent = mollysCount;
-            document.getElementById('kasey-count').textContent = kaseysCount;
-            document.getElementById('mimi-count').textContent = mimisCount;
-            document.getElementById('haneys-count').textContent = haneysCount;
-            document.getElementById('estate-count').textContent = estateSale;
-            document.getElementById('donation-count').textContent = donations;
-            document.getElementById('disposal-count').textContent = disposal;
+            document.getElementById('stephen-count').textContent = stephen;
+            document.getElementById('molly-count').textContent = molly;
+            document.getElementById('kasey-count').textContent = kasey;
+            document.getElementById('mimi-count').textContent = mimi;
+            document.getElementById('haneys-count').textContent = haneys;
+            document.getElementById('estate-count').textContent = estateCount;
+            document.getElementById('donate-count').textContent = donateCount;
+            document.getElementById('dispose-count').textContent = disposeCount;
         }
 
-        // Export data
+        // Export to CSV
         function exportData() {
-            let csv = 'Room,Item,Beneficiaries Claiming,Destination,Photo Count\n';
+            let csv = 'Image,Stephen,Molly,Kasey,Mimi,Haneys,Disposition\n';
 
-            data.rooms.forEach(room => {
-                room.items.forEach(item => {
-                    const beneficiaries = (item.beneficiaries && item.beneficiaries.length > 0) ? item.beneficiaries.join('; ') : '';
-                    const photoCount = item.photos ? item.photos.length : 0;
-                    csv += `"${room.name}","${item.name}","${beneficiaries}","${item.destination}",${photoCount}\n`;
-                });
+            Object.entries(data).forEach(([filename, item]) => {
+                const beneficiaries = item.beneficiaries.join('; ') || '';
+                const disposition = item.disposition || '';
+                csv += `"${filename}","${beneficiaries.includes('Stephen') ? 'X' : ''}","${beneficiaries.includes('Molly') ? 'X' : ''}","${beneficiaries.includes('Kasey') ? 'X' : ''}","${beneficiaries.includes('Mimi') ? 'X' : ''}","${beneficiaries.includes('Haneys') ? 'X' : ''}","${disposition}"\n`;
             });
 
             const blob = new Blob([csv], { type: 'text/csv' });
@@ -1122,22 +498,24 @@
         // Print inventory
         function printInventory() {
             const printWindow = window.open('', '', 'height=600,width=800');
-            let printContent = '<h1>Estate Inventory - Mary Ellen Estate</h1>';
+            let content = '<h1>Estate Inventory - Mary Ellen Estate</h1><table border="1" cellpadding="10" style="width:100%;">';
+            content += '<tr><th>Item</th><th>Stephen</th><th>Molly</th><th>Kasey</th><th>Mimi</th><th>Haneys</th><th>Disposition</th></tr>';
 
-            data.rooms.forEach(room => {
-                if (room.items.length > 0) {
-                    printContent += `<h2>${room.name}</h2><ul>`;
-                    room.items.forEach(item => {
-                        const beneficiaries = (item.beneficiaries && item.beneficiaries.length > 0) ? ` [Claimed by: ${item.beneficiaries.join(', ')}]` : '';
-                        const photoCount = item.photos && item.photos.length > 0 ? ` [${item.photos.length} photo(s)]` : '';
-                        printContent += `<li>${item.name}${beneficiaries} [${item.destination}]${photoCount}</li>`;
-                    });
-                    printContent += '</ul>';
-                }
+            Object.entries(data).forEach(([filename, item]) => {
+                content += `<tr>
+                    <td>${filename}</td>
+                    <td>${item.beneficiaries.includes('Stephen') ? 'X' : ''}</td>
+                    <td>${item.beneficiaries.includes('Molly') ? 'X' : ''}</td>
+                    <td>${item.beneficiaries.includes('Kasey') ? 'X' : ''}</td>
+                    <td>${item.beneficiaries.includes('Mimi') ? 'X' : ''}</td>
+                    <td>${item.beneficiaries.includes('Haneys') ? 'X' : ''}</td>
+                    <td>${item.disposition || ''}</td>
+                </tr>`;
             });
 
+            content += '</table>';
             printWindow.document.write('<html><head><title>Estate Inventory</title></head><body>');
-            printWindow.document.write(printContent);
+            printWindow.document.write(content);
             printWindow.document.write('</body></html>');
             printWindow.document.close();
             printWindow.print();
@@ -1145,29 +523,16 @@
 
         // Clear all data
         function clearAllData() {
-            if (confirm('This will delete ALL items and rooms. Are you sure?')) {
-                localStorage.removeItem('estateInventory');
-                data = { rooms: [] };
-                initializeDefaultRooms();
-                saveData();
-                renderRooms();
+            if (confirm('Clear all data? This cannot be undone.')) {
+                localStorage.removeItem('estateInventoryData');
+                initializeData();
+                renderItems();
+                updateStats();
             }
         }
 
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', loadData);
-
-        // Close modals when clicking outside
-        window.onclick = function(event) {
-            const roomModal = document.getElementById('room-modal');
-            const itemModal = document.getElementById('item-modal');
-            if (event.target === roomModal) {
-                closeRoomModal();
-            }
-            if (event.target === itemModal) {
-                closeItemModal();
-            }
-        }
     </script>
 </body>
 </html>
